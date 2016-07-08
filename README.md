@@ -14,3 +14,7 @@ The whole process consists of three parts:
 1. (ctraj of UR5.m) giving the start and goal point in the cartesian space, computes the straight path* based on the first 3-axis robot. Differentiate the joint variable along the path and output the data (q0, q1, qd0, qd1) for TOPP.  
 2. (TOPP coffee motion.py) giving the formatted path data from above, and the velocity and acceleration constraints (for each axis in rad/s), computes the time optimal parameterized path (time array, joint variable/velocity/acceleration) in csv files.  
 3. (coffee motion.m) computes the complete six axis path.
+
+* the reason we use the straight path is that in such a case the only kinematics variable we care is the cartesian acceleration. Otherwise we have to consider the Coriolis Force(an inertial force that acts on objects that are in motion relative to a rotating reference frame).  
+* we have not yet tested the program in simulation or real robot and still ongoing refine it.  
+* a serious problem now is that the inverse kinematics function ikine6s is not for ur5 configuration.
