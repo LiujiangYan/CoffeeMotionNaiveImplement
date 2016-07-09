@@ -41,7 +41,8 @@ for i=1:length(time)
     pose_x = atan2(cAccel(2),(cAccel(3)+9.81));
     pose_y = atan2(cAccel(1),(cAccel(3)+9.81));
     %get the complete transition matrix and update
-    T(:,:,i) = T(:,:,i) * trotx(pose_x) * troty(pose_y);
+    %T(:,:,i) = T(:,:,i) * trotx(pose_x) * troty(pose_y);
+    T(1:3,1:3,i) = rotx(pose_x) * roty(pose_y);
 end
 
 %from the transition matrix compute the 6 axis joint variable trajectory
